@@ -12,6 +12,8 @@ import "./assets/fonts/NovaRound-Regular.ttf";
 import ComprarCreditos from "./pages/ComprarCreditos";
 
 function App() {
+  console.log("fetch");
+  var test = fetch("http://localhost:8080/empresas").then((res) => {console.log(res.json())}).catch((error) => {console.error(error);}) 
   return (
     <Router>
       <div className="App">

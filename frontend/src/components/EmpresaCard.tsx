@@ -3,7 +3,7 @@ interface Props {
 }
 
 export default function EmpresaCard({ empresa }: Props) {
-  console.log(empresa);
+  //console.log(empresa);
   return (
     <div className="flex flex-1 flex-col justify-between rounded-xl bg-neutral-300 p-5">
       <div>
