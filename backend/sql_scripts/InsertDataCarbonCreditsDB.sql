@@ -1,5 +1,5 @@
 
-INSERT INTO EMPRESAS (nome, tipo_empresa, email, telefone, endereco, emissao_carbono, saldo, creditos_carbono) VALUES
+INSERT IGNORE INTO EMPRESAS (nome, tipo_empresa, email, telefone, endereco, emissao_carbono, saldo, creditos_carbono) VALUES
 ('EcoTech Ltda', 'Tecnologia', 'ecotech1@email.com', '21990000001', 'Rua A, 100', 120.5, 5000, 300),
 ('GreenEnergy SA', 'Energia', 'greenenergy2@email.com', '21990000002', 'Rua B, 200', 300.2, 7000, 500),
 ('CarbonFree Corp', 'Consultoria', 'carbonfree3@email.com', '21990000003', 'Rua C, 300', 80.0, 2000, 150),
@@ -21,7 +21,7 @@ INSERT INTO EMPRESAS (nome, tipo_empresa, email, telefone, endereco, emissao_car
 ('EcoRetail', 'Varejo', 'ecoretail19@email.com', '21990000019', 'Rua S, 1900', 175.3, 4100, 300),
 ('SmartGreen', 'Tecnologia', 'smartgreen20@email.com', '21990000020', 'Rua T, 2000', 125.0, 3100, 200);
 
-INSERT INTO OFERTAS (vendedor_id, aberta, tipo_projeto, descricao, creditos_oferecidos, preco_unitario) VALUES
+INSERT IGNORE INTO OFERTAS (vendedor_id, aberta, tipo_projeto, descricao, creditos_oferecidos, preco_unitario) VALUES
 (1, TRUE, 'Reflorestamento', 'Projeto Amazônia', 50, 10.5),
 (2, TRUE, 'Energia Solar', 'Painéis solares urbanos', 100, 12.0),
 (3, TRUE, 'Eficiência Energética', 'Redução industrial', 40, 9.5),
@@ -67,7 +67,7 @@ INSERT INTO OFERTAS (vendedor_id, aberta, tipo_projeto, descricao, creditos_ofer
 (19, TRUE, 'Varejo', 'Eco logística', 60, 10.6),
 (20, TRUE, 'Smart City', 'Energia urbana', 150, 15.2);
 
-INSERT INTO COMPRAS (vendedor_id, comprador_id, creditos_trocados, preco_unitario) VALUES
+INSERT IGNORE INTO COMPRAS (vendedor_id, comprador_id, creditos_trocados, preco_unitario) VALUES
 (1,2,20,10.5),
 (2,3,30,12.0),
 (3,4,15,9.5),

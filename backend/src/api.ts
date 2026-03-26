@@ -21,6 +21,6 @@ app.get("/ofertas", async (req, res) => {
 })
 
 
-app.listen(8080, ()=>{
+app.listen(api_config.api_port, ()=>{
     console.log("backend start!")
 })

@@ -1,3 +1,3 @@
-create database if not exists CarbonCredits;
+create database if not exists CARBONCREDITS;
 
 

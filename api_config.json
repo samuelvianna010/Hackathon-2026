@@ -1,7 +1,9 @@
 {
     "api_url":"https://localhost:8080",
+    "api_port":"8080",
     "db_port":"3306",
     "db_user":"root",
     "db_password":"mysql",
-    "create_db":true
+    "create_db":true,
+    "insert_data_db":true
 }
