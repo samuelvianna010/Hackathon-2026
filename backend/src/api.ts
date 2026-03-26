@@ -11,8 +11,8 @@ const app = express()
 
 //console.log(await bd.connection.execute("select * from Ofertas"));
 
-app.get("/ofertas", async (req, res) => {
-    const q = "SELECT * FROM OFERTAS";
+app.get("/empresass", async (req, res) => {
+    const q = "SELECT * FROM EMPRESAS";
     var ret = await bd.connection.query(q);
     console.log(ret);
     
