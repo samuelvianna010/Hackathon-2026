@@ -38,11 +38,12 @@ async function _create_db_and_tables(){
 
     for (const stmt of statements) {
         (await temp2).execute(stmt);
+        console.log("Creating tables")
     }
 }
 
 if (api_config.create_db == true){
-    _create_db_and_tables
+    await _create_db_and_tables()
 }
 
 const bd = {
