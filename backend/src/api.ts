@@ -3,11 +3,12 @@ import mysql2 from "mysql2/promise";
 import fs from "fs";
 
 import bd, {api_config} from "./bd.ts";
-
-
+import cors from 'cors';
 
 
 const app = express()
+
+app.use(cors());
 
 //console.log(await bd.connection.execute("select * from Ofertas"));
 
