@@ -3,7 +3,7 @@ import EmpresaCard from "../components/EmpresaCard";
 import Header from "../components/Header";
 import { wait } from "@testing-library/user-event/dist/utils";
 import { Empresa } from "../types/Empresa";
-
+import axios from "axios"
 interface State {
   empresas: Empresa[];
 }

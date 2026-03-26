@@ -3,20 +3,30 @@ import imgLogin from "../assets/img/img-login.png";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Empresa } from "../types/Empresa";
-
+import { randomInt } from "node:crypto";
+localStorage.setItem("isLogged", "false");
 export default function Login() {
   const navigate = useNavigate();
-  useEffect(() => {
-    if (JSON.parse(localStorage.getItem("isLogged") as string)) {
-      navigate("/comprar-creditos");
-    }
-  }, []);
-
   const [state, setState] = useState({
     emailInput: "",
     passwordInput: "",
-    empresa: {} as Empresa,
+    empresa: {} ,
   });
+  
+  // useEffect(() => {
+    // if ((localStorage.getItem("loggedAs") as string).indexOf(",") == -1){
+      
+    // }
+  console.log(localStorage.getItem("isLogged"))
+  console.log(localStorage.getItem("loggedAs"))
+  if (localStorage.getItem("isLogged")  == "true") {
+    navigate("/comprar-creditos");
+  } else {
+    tryLogin("","");
+  }
+  // }, []);
+
+ 
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -26,25 +36,35 @@ export default function Login() {
     }));
   };
 
-  useEffect(() => {
-    (async () => {
+  // useEffect(() => {(
+  async function getEmpresa() {
       const res = await fetch("http://localhost:8080/empresas");
       const data: object[] = await res.json();
-      setState((old) => ({
-        ...old,
-        empresa: data[0] as Empresa,
-      }));
-      console.log(data);
-    })();
-  });
-  function tryLogin(email: string, password: string) {
+
+      var emp = data[Math.floor(Math.random()*data.length)]
+      setState({
+        ...state,
+        empresa: emp,
+      });
+      console.log(emp);
+      console.log(emp as Empresa);
+    };
+
+  // });
+  async function tryLogin(email: string, password: string) {
     console.log("Email:", email);
     console.log("Senha:", password);
-
+    await getEmpresa()
+    if (Object.keys(state.empresa).length === 0){
+      console.error("no empresa?")
+      return 
+    }
+    console.log("try login>")
+    console.log(state.empresa);
     localStorage.setItem("isLogged", "true");
     localStorage.setItem("loggedAs", JSON.stringify(state.empresa));
-    navigate("/login");
-    window.location.reload();
+    navigate("/comprar-creditos");
+    // window.location.reload();
   }
   return (
     <div>

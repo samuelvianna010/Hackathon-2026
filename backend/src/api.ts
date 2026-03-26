@@ -8,8 +8,8 @@ import cors from 'cors';
 
 const app = express()
 
-app.use(cors());
-
+app.use(cors({origin:"http://localhost:3000"}));
+app.use(express.json());
 //console.log(await bd.connection.execute("select * from Ofertas"));
 
 app.get("/empresas", async (req, res) => {
@@ -21,6 +21,17 @@ app.get("/empresas", async (req, res) => {
     return res.json(ret);
 })
 
+app.post("/comprar_creditos", (req, res) => {
+    const q = "UPDATE EMPRESAS SET id = ?, saldo = ? WHERE id = ?"
+    const values = {
+        id_buyer : req.body.id_buyer,
+        id_seller : req.body.id_seller,
+        credits_bought : req.body.credits
+    }
+
+    console.log(values);
+
+})
 
 app.listen(api_config.api_port, ()=>{
     console.log("backend start!")
