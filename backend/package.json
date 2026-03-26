@@ -2,10 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "bdaccess.js",
+  "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon bdaccess.js"
+    "start": "nodemon api.js"
   },
   "keywords": [],
   "author": "",

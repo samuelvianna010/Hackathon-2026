@@ -1,8 +1,16 @@
-import express from 'express';
+
 import mysql2 from "mysql2/promise";
 import fs from "fs";
 
-async function _create_db(){
+
+export var api_config = JSON.parse(fs.readFileSync("../api_config.json", "utf-8", 
+    (err, data) => {
+        if (err) {console.error(err); return;} 
+        console.log(data); }));
+console.log(api_config)
+console.log(api_config.api_url)
+
+async function _create_db_and_tables(){
     var temp = mysql2.createConnection({
         host:"localhost",
         user:api_config.db_user,
@@ -33,25 +41,21 @@ async function _create_db(){
     }
 }
 
-var api_config = JSON.parse(fs.readFileSync("../api_config.json", "utf-8", 
-    (err, data) => {
-        if (err) {console.error(err); return;} 
-        console.log(data); }));
-console.log(api_config)
-console.log(api_config.api_url)
+if (api_config.create_db == true){
+    _create_db_and_tables
+}
 
-const app = express()
-
-await _create_db();
-
-const db = mysql2.createConnection({
+const bd = {
+    connection: await mysql2.createConnection({
     host:"localhost",
     user:api_config.db_user,
     password:api_config.db_password,
     database:"CarbonCredits"
-})
+}),
 
 
-app.listen(8800, ()=>{
-    console.log("backend start!")
-})
+}
+
+
+
+export default bd; 
