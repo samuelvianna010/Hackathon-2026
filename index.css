@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* index.css */
+@font-face {
+  font-family: 'Nova Round';
+  src: url('./assets/fonts/NovaRound-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* evita flash de texto invisível */
+}
