@@ -1,0 +1,6 @@
+{
+    "api_url":"https://localhost:8080",
+    "db_port":"3306",
+    "db_user":"root",
+    "db_password":"mysql"
+}
