@@ -2,7 +2,7 @@ import express from 'express';
 import mysql2 from "mysql2/promise";
 import fs from "fs";
 
-import bd, {api_config} from "./bd.mjs";
+import bd, {api_config} from "./bd.ts";
 
 
 

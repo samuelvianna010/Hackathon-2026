@@ -3,10 +3,7 @@ import mysql2 from "mysql2/promise";
 import fs from "fs";
 
 
-export var api_config = JSON.parse(fs.readFileSync("../api_config.json", "utf-8", 
-    (err, data) => {
-        if (err) {console.error(err); return;} 
-        console.log(data); }));
+export var api_config = JSON.parse(fs.readFileSync("../api_config.json", "utf-8"));
 console.log(api_config)
 console.log(api_config.api_url)
 
