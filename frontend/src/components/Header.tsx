@@ -22,7 +22,24 @@ export default function Header() {
           className="flex flex-row items-center gap-4 pl-10"
           onClick={() => navigate("/login")}
         >
-          <h3 className="text-xl font-semibold text-white">Usuário</h3>
+          {localStorage.getItem("loggedAs") ? (
+            <div className="flex flex-col items-end">
+              <h3 className="text-xl font-semibold text-white">
+                {JSON.parse(localStorage.getItem("loggedAs") as string).nome}
+              </h3>
+              <h3 className="text-xl font-extrabold text-white">
+                {Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(
+                  JSON.parse(localStorage.getItem("loggedAs") as string).saldo,
+                )}
+              </h3>
+            </div>
+          ) : (
+            <h3 className="text-xl font-semibold text-white">Entrar</h3>
+          )}
+
           <div className="flex h-[60px] w-[60px] items-center justify-center rounded-full bg-teal-900">
             <i className="fa-solid fa-user text-2xl text-teal-100"></i>
           </div>

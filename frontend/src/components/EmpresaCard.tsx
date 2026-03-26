@@ -1,3 +1,4 @@
+import { Empresa } from "../types/Empresa";
 interface Props {
   empresa: Empresa;
 }
@@ -12,11 +13,11 @@ export default function EmpresaCard({ empresa }: Props) {
           {Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
-          }).format(empresa.precoUnitario)}
+          }).format(empresa.preco_unitario)}
           /crédito
         </h2>
         <h3 className="text-xl text-neutral-800">
-          Créditos Disponíveis: {empresa.quantidadeCredDisp}
+          Créditos Disponíveis: {empresa.creditos_carbono}
         </h3>
       </div>
       <button className="mt-3 w-full rounded-xl bg-teal-800 p-2 font-nova text-2xl text-white">

@@ -20,9 +20,12 @@ type RamoEmpresa =
   | "Educação e Pesquisa Ambiental"
   | "Organizações Não Governamentais (ONGs)";
 
-interface Empresa {
+export interface Empresa {
+  id: number;
   nome: string;
-  ramo: RamoEmpresa;
-  quantidadeCredDisp: number;
-  precoUnitario: number;
+  tipo_empresa: RamoEmpresa;
+  telefone: string;
+  saldo: number;
+  creditos_carbono: number;
+  preco_unitario: number;
 }

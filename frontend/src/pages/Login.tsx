@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import imgLogin from "../assets/img/img-login.png";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Empresa } from "../types/Empresa";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ export default function Login() {
   const [state, setState] = useState({
     emailInput: "",
     passwordInput: "",
+    empresa: {} as Empresa,
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -24,12 +26,25 @@ export default function Login() {
     }));
   };
 
+  useEffect(() => {
+    (async () => {
+      const res = await fetch("http://localhost:8080/empresas");
+      const data: object[] = await res.json();
+      setState((old) => ({
+        ...old,
+        empresa: data[0] as Empresa,
+      }));
+      console.log(data);
+    })();
+  });
   function tryLogin(email: string, password: string) {
     console.log("Email:", email);
     console.log("Senha:", password);
 
     localStorage.setItem("isLogged", "true");
+    localStorage.setItem("loggedAs", JSON.stringify(state.empresa));
     navigate("/login");
+    window.location.reload();
   }
   return (
     <div>
